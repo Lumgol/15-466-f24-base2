@@ -6,7 +6,7 @@
 
 //Shader program that draws transformed, lit, textured vertices tinted with vertex colors:
 struct LitColorTextureProgram {
-	LitColorTextureProgram();
+	LitColorTextureProgram(glm::vec4 custom_color);
 	~LitColorTextureProgram();
 
 	GLuint program = 0;
@@ -21,6 +21,7 @@ struct LitColorTextureProgram {
 	GLuint OBJECT_TO_CLIP_mat4 = -1U;
 	GLuint OBJECT_TO_LIGHT_mat4x3 = -1U;
 	GLuint NORMAL_TO_LIGHT_mat3 = -1U;
+	GLuint CUSTOM_COLOR = -1U;
 
 	//lighting:
 	GLuint LIGHT_TYPE_int = -1U;

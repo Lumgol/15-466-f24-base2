@@ -55,6 +55,9 @@ struct Scene {
 		Transform * transform;
 
 		//Contains all the data needed to run the OpenGL pipeline:
+		glm::vec4 paint_color1 = glm::vec4(-1.);
+		bool is_paintable = false;
+
 		struct Pipeline {
 			GLuint program = 0; //shader program; passed to glUseProgram
 
@@ -70,7 +73,9 @@ struct Scene {
 			GLuint OBJECT_TO_LIGHT_mat4x3 = -1U; //uniform location for object to light space (== world space) matrix
 			GLuint NORMAL_TO_LIGHT_mat3 = -1U; //uniform location for normal to light space (== world space) matrix
 
-			std::function< void() > set_uniforms; //(optional) function to set any other useful uniforms
+			GLuint CUSTOM_COLOR = -1U;
+
+			std::function< void(glm::vec4) > set_uniforms; //(optional) function to set any other useful uniforms
 
 			//texture objects to bind for the first TextureCount textures:
 			enum : uint32_t { TextureCount = 4 };
